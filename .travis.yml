@@ -6,8 +6,8 @@ perl:
   #- "5.8"
 
 before_install:
-    - cpanm IPC::ConcurrencyLimit --notest --mirror http://cpan.mirrors.travis-ci.org
-    - cpanm Perl::Critic --notest --mirror http://cpan.mirrors.travis-ci.org
+    - cpanm IPC::ConcurrencyLimit --notest
+    - cpanm Perl::Critic --notest
 # - cpanm -n Devel::Cover::Report::Coveralls
 # see http://search.cpan.org/~mikihoshi/Devel-Cover-Report-Coveralls-0.06/lib/Devel/Cover/Report/Coveralls.pm
 
