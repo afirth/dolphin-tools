@@ -4,16 +4,23 @@ use strict; use warnings;
 use vars qw($VERSION); $VERSION = '0.0.1';  ## Current version of tis file
 require  5.008;    ## requires this Perl version or later
 
+#make a modulino
+package Local::runparallel;
+__PACKAGE__->run( @ARGV ) unless caller();
+
 use Getopt::Long qw(:config auto_help);
 use Pod::Usage;
 
 use IPC::ConcurrencyLimit;
 use File::Path qw(make_path);
 
+my %args;
+
+sub run {
 
 ### ARG PARSING AND VERIFICATION ###
 #
-my %args = (
+%args = (
 	'concurrent' => 10,
 	'lockpath'   => '/tmp/locks',
 	'sleep'      => 1,
@@ -68,6 +75,7 @@ do {
 	}
 } until ( $lock_id );
 # lock released with $limit going out of scope here
+		}
 
 sub getoptions {
 	GetOptions( \%args,
