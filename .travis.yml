@@ -13,7 +13,8 @@ before_install:
 
 # should really use dependency manager and --install-deps as below
 
-#install:
+install:
+    - echo 1 # we don't actually install anything yet
 #    - cpanm -v --installdeps --notest --mirror http://cpan.mirrors.travis-ci.org .
 
 #script: "perl Build.PL; ./Build test"
