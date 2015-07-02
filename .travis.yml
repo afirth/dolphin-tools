@@ -20,7 +20,8 @@ install:
 #script: "perl Build.PL; ./Build test"
 
 script:
-  - perl -c src/*.pl
+# - perl -c src/*.pl # no perl scripts currently
+  - perl -c src/*.pm
   - perlcritic --verbose 5 t/
   - perlcritic --verbose 5 src/
 # - perlcritic --brutal --verbose 5 t/
