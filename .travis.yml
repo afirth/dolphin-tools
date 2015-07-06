@@ -9,6 +9,8 @@ before_install:
     - cpanm IPC::ConcurrencyLimit --notest
     - cpanm Perl::Critic --notest
     - cpanm Devel::Cover --notest
+
+# Coveralls is a good option if this is for a perl module
 # - cpanm -n Devel::Cover::Report::Coveralls
 # see http://search.cpan.org/~mikihoshi/Devel-Cover-Report-Coveralls-0.06/lib/Devel/Cover/Report/Coveralls.pm
 
@@ -16,9 +18,8 @@ before_install:
 
 install:
     - echo 1 # we don't actually install anything yet
-#    - cpanm -v --installdeps --notest --mirror http://cpan.mirrors.travis-ci.org .
-
-#script: "perl Build.PL; ./Build test"
+#   - cpanm -v --installdeps --notest --mirror http://cpan.mirrors.travis-ci.org .
+#   - script: "perl Build.PL; ./Build test"
 
 script:
 # - perl -c src/*.pl # no perl scripts currently
@@ -27,6 +28,7 @@ script:
   - perlcritic --stern --verbose 5 src/
   - prove
   - cover -t -make 'prove -Ilib -r t; echo >/dev/null'
+#TODO exclude t/*.t from coverage report
 
 #branches:
 #   only:
