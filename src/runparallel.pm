@@ -2,7 +2,9 @@
 package runparallel;
 use strict; use warnings;
 
-use vars qw($VERSION); $VERSION = '0.0.2';  ## Current version of this file
+use vars qw($VERSION);
+$VERSION = '0.0.2';  ## Current version of this file
+
 require  5.008;    ## requires this Perl version or later
 
 #make a modulino
@@ -75,6 +77,7 @@ sub run {
 		}
 	} until ( $lock_id );
 # lock released with $limit going out of scope here
+	return 1;
 }
 
 
@@ -86,6 +89,7 @@ sub getoptions {
 	'sleep:i',
 	'verbose'
 	) or pod2usage();
+	return 1;
 }
 
 1; #must return true as a modulino
