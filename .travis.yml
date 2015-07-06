@@ -8,6 +8,7 @@ perl:
 before_install:
     - cpanm IPC::ConcurrencyLimit --notest
     - cpanm Perl::Critic --notest
+    - cpanm Devel::Cover --notest
 # - cpanm -n Devel::Cover::Report::Coveralls
 # see http://search.cpan.org/~mikihoshi/Devel-Cover-Report-Coveralls-0.06/lib/Devel/Cover/Report/Coveralls.pm
 
@@ -25,6 +26,8 @@ script:
   - perlcritic --stern --verbose 5 t/
   - perlcritic --stern --verbose 5 src/
   - prove
+  - perl -MDevel::Cover src/*.pm
+  - cover
 
 #branches:
 #   only:
