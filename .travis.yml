@@ -22,10 +22,8 @@ install:
 script:
 # - perl -c src/*.pl # no perl scripts currently
   - perl -c src/*.pm
-  - perlcritic --verbose 5 t/
-  - perlcritic --verbose 5 src/
-# - perlcritic --brutal --verbose 5 t/
-# - perlcritic --brutal --verbose 5 src/
+  - perlcritic --stern --verbose 5 t/
+  - perlcritic --stern --verbose 5 src/
   - prove
 
 #branches:
