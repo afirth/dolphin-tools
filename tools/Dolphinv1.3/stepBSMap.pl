@@ -112,8 +112,7 @@ unless ( exists $args{dspaired} and $args{dspaired} =~ /no|none|yes|paired/i ) {
 
 # Setup the output directory
 my $binname = basename( $args{binpath} ); #the name of the binary we execute (bsmap here)
-my $outdir = "$args{outdir}/".lc($binname);
-make_path($args{outdir});
+my $outdir = "$args{outdir}/";
 
 # Setup the input directory
 # if this is the first step, it will be path/input/
@@ -123,8 +122,11 @@ if ($args{previous} =~ /NONE/) {
 	$inputdir = "$outdir/input";
 }
 else {
-	$inputdir = "$outdir/".lc( $args{previous} );
+	#TODO remove seqmapping from path
+	$inputdir = "$outdir/seqmapping/".lc( $args{previous} );
 }
+$outdir .= lc($binname);
+make_path($args{outdir});
 
 # Expecting paired or single end libraries?
 my $spaired;
