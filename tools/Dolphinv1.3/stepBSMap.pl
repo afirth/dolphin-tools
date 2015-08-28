@@ -201,6 +201,8 @@ sub do_job {
   my $job = qq($args{jobsubmit} -n $jobname -c "$com"); #TODO $com should be single quoted?
   print "job: $job\n" if $args{verbose};
 
+# /share/pkg/moabs/1.3.2//bin/bsmap -a s1_r1.fq              -o wt_r1.bam   -d /share/data/umw_biocore/genome_data/mouse/mm10/mm10.fa  -R   -D C-CGG  -p 8  > moabs.bsmap.wt_r1.bam.log 2>&1
+
 # run the job
   unless ( system ($job) == 0 ) {
     die "Error 25: Cannot run the job $job: $!";
