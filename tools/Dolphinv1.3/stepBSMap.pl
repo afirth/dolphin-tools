@@ -89,8 +89,12 @@ unless ( -e $args{binpath} and -x $args{binpath} ) {
 }
 
 #digestion must be valid
-unless ( $args{digestion} =~ /[CGAT-]+/ ) {
-	die ( "Invalid option digestion: site $args{digestion}" );
+unless ( exists $args{digestion} ) {
+	warn ( "Warning, no digestion site specified, using WGBS mapping" );
+	next;
+	unless ( $args{digestion} =~ /[CGAT-]+/ ) {
+		die ( "Invalid option digestion: site $args{digestion}" );
+	}
 }
 
 #samtools must exist and be executable
@@ -186,11 +190,12 @@ sub do_job {
   $com .= " -b $file2" if ( $file2 ); #only for paired end libs
   $com .= " -o $outfile";
   $com .= " -d $args{ref}";
-  $com .= " -D $args{digestion}";
+	$com .= " -D $args{digestion}" if ( exists $args{digestion} );
   $com .= " $args{params}" if ( exists $args{params} );
   $com .= " > $logfile 2>&1";
   $com .= " $mvcom";
 #TODO sort and index using samtools
+#BUG mcall will not function until data is sorted and indexed
 
   print "command: $com\n" if $args{verbose};
 
