@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use strict; use warnings;
 
-use vars qw($VERSION); $VERSION = '0.0.1';  ## Current version of tis file
+use vars qw($VERSION); $VERSION = '0.0.1';  ## Current version of this file
 require  5.008;    ## requires this Perl version or later
 
 use Getopt::Long qw(:config auto_help);
